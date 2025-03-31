@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import Logo from '/Logo.png'
 import './App.css'
+import './meme'
+import './qoute'
 
 
 function App() {
