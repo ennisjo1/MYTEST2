@@ -1,6 +1,6 @@
 import Logo from '/Logobg.png';
 import './App.css';
-import MemeGenerator from './qoute';
+import MemeGenerator from './memes';
 
 function App() {
   return (

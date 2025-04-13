@@ -40,13 +40,13 @@ function MemeGenerator() {
   return (
     <div style={{ textAlign: 'center' }}>
       <h3>Pick Your Mood:</h3>
-      <div style={{ fontSize: '2rem', display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap' }}>
+      <div style={{ fontSize: '80px', display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap' }}>
         {Object.keys(feelingsMap).map((emoji) => (
           <span
             key={emoji}
             onClick={() => handleEmojiClick(emoji)}
             style={{
-              fontSize: '2.5rem',
+              fontSize: '80px',
               cursor: 'pointer',
               transition: 'transform 0.2s',
             }}
