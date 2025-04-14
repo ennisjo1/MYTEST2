@@ -8,7 +8,9 @@ function App() {
       <div className="logo" onClick={() => window.location.reload()}>
         <img src={Logo} className="logo" alt="Logobg" />
       </div>
+      <div className="Title">
       <h1>How's your Mood Today?</h1>
+      </div>
       <MemeGenerator />
     </>
   );

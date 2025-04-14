@@ -1,23 +1,26 @@
-body{
-  background-color: #4CAF50;
-
+:root{
+  --color-palette-1:#A5D5D1;
+  --color-palette-2:#8A9CEA;
+  --color-palette-3:#81EFD1;
+  --color-palette-4:#D4C4BE;
+  --color-palette-5:#76A5D4;
 }
 
-#root {
-    max-width: 1280px;
-    margin: 0 auto;
-    text-align: center;
-  }
+body{
+  background-color: var(--color-palette-4);
+  font-family: "Jockey One", sans-serif;
+}
 
-  .logo {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 10px;
-    height: 100px;
-    width: 100px;
-    cursor: pointer;
-  }
+.logo {
+  position: absolute;
+  justify-content: flex-start;
+  width: 9vw;
+  cursor: pointer;
+  background-color: var(--color-palette-4);
+  border-radius: 5%;
+}
+.Title{
+  position: flex;
+  text-align: center;
+  font-size:5vh;
+}
