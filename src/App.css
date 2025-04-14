@@ -8,7 +8,7 @@
 
 body{
   background-color: var(--color-palette-4);
-  font-family: "Jockey One", sans-serif;
+  font-family: "Jockey one", sans-serif;
 }
 
 .logo {
@@ -19,7 +19,7 @@ body{
   background-color: var(--color-palette-4);
   border-radius: 5%;
 }
-.Title{
+.title{
   position: flex;
   text-align: center;
   font-size:5vh;
