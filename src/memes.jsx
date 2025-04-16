@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 
 const supabaseUrl = 'https://ssrooxlflakfldbsgjcn.supabase.co';
-const supabaseKey = 'YOUR_SUPABASE_KEY';
+const supabaseKey = 'YeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzcm9veGxmbGFrZmxkYnNnamNuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ2NDg3MzUsImV4cCI6MjA2MDIyNDczNX0.53bFYWiNJvoCreZ5JOr34ZKBRLjFWA5FSfD3xIJqzhI';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 function MemeGenerator() {
