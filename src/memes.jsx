@@ -13,7 +13,7 @@ function MemeGenerator() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [happy, angry, sad, cool, mindBlown, sleepy] = await Promise.all([
+        const tables = await Promise.all([
           supabase.from('happy_table').select('*'),
           supabase.from('angry_table').select('*'),
           supabase.from('sad_table').select('*'),
@@ -21,34 +21,40 @@ function MemeGenerator() {
           supabase.from('mind_blown_table').select('*'),
           supabase.from('sleepy_table').select('*'),
         ]);
-
-        const getRand = (table) => table.data[Math.floor(Math.random() * table.data.length)];
-
+  
+        const [happy, angry, sad, cool, mindBlown, sleepy] = tables.map(t => t.data || []);
+  
+        const getRand = (arr) => arr[Math.floor(Math.random() * arr.length)] || { top_text: "load", bottom_text: "error" };
+  
         setFeelingsMap({
-          '😄': [getRand(happy).top_text, getRand(happy).bottom_text],
-          '😡': [getRand(angry).top_text, getRand(angry).bottom_text],
-          '😢': [getRand(sad).top_text, getRand(sad).bottom_text],
-          '😎': [getRand(cool).top_text, getRand(cool).bottom_text],
-          '🤯': [getRand(mindBlown).top_text, getRand(mindBlown).bottom_text],
-          '😴': [getRand(sleepy).top_text, getRand(sleepy).bottom_text],
+          '😄': getRand(happy),
+          '😡': getRand(angry),
+          '😢': getRand(sad),
+          '😎': getRand(cool),
+          '🤯': getRand(mindBlown),
+          '😴': getRand(sleepy),
         });
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-
+  
     fetchData();
   }, []);
+  
 
   const handleEmojiClick = async (emoji) => {
-    const [topText, bottomText] = feelingsMap[emoji] || ['Top', 'Bottom'];
+    const quote = feelingsMap[emoji];
+    if (!quote) return;
+  
     setLoading(true);
-
+  
     try {
       const res = await fetch('https://api.memegen.link/templates');
       const templates = await res.json();
       const id = templates[Math.floor(Math.random() * templates.length)].id;
-      const meme = `https://api.memegen.link/images/${id}/${encodeURIComponent(topText)}/${encodeURIComponent(bottomText)}.png`;
+  
+      const meme = `https://api.memegen.link/images/${id}/${encodeURIComponent(quote.top_text)}/${encodeURIComponent(quote.bottom_text)}.png`;
       setMemeUrl(meme);
     } catch (err) {
       console.error('Meme error:', err);
