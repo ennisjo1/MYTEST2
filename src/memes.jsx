@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image';
+import Row from 'react-bootstrap/Row';
 
 const supabaseUrl = 'https://ssrooxlflakfldbsgjcn.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzcm9veGxmbGFrZmxkYnNnamNuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ2NDg3MzUsImV4cCI6MjA2MDIyNDczNX0.53bFYWiNJvoCreZ5JOr34ZKBRLjFWA5FSfD3xIJqzhI';
@@ -96,7 +100,13 @@ function MemeGenerator() {
       </div>
 
       {loading && <p>Generating meme...</p>}
-      {memeUrl && <img src={memeUrl} alt="Generated Meme" style={{ marginTop: '20px', maxWidth: '90%' }} />}
+      {memeUrl &&     <Container>
+      <Row>
+        <Col xl={100} lg={100}>
+          <Image src={memeUrl} thumbnail />
+        </Col>
+      </Row>
+    </Container>}
     </div>
   );
 }
