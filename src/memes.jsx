@@ -5,6 +5,8 @@ const supabaseUrl = 'https://ssrooxlflakfldbsgjcn.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzcm9veGxmbGFrZmxkYnNnamNuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ2NDg3MzUsImV4cCI6MjA2MDIyNDczNX0.53bFYWiNJvoCreZ5JOr34ZKBRLjFWA5FSfD3xIJqzhI';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
+let tables = null;
+
 function MemeGenerator() {
   const [feelingsMap, setFeelingsMap] = useState({});
   const [memeUrl, setMemeUrl] = useState('');
@@ -13,7 +15,7 @@ function MemeGenerator() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const tables = await Promise.all([
+        tables = await Promise.all([
           supabase.from('happy_table').select('*'),
           supabase.from('angry_table').select('*'),
           supabase.from('sad_table').select('*'),
@@ -44,6 +46,19 @@ function MemeGenerator() {
   
 
   const handleEmojiClick = async (emoji) => {
+    const [happy, angry, sad, cool, mindBlown, sleepy] = tables.map(t => t.data || []);
+
+    const getRand = (arr) => arr[Math.floor(Math.random() * arr.length)] || { top_text: "load", bottom_text: "error" };
+
+    setFeelingsMap({
+      '😄': getRand(happy),
+      '😡': getRand(angry),
+      '😢': getRand(sad),
+      '😎': getRand(cool),
+      '🤯': getRand(mindBlown),
+      '😴': getRand(sleepy),
+    });
+
     const quote = feelingsMap[emoji];
     if (!quote) return;
   
