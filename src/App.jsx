@@ -1,6 +1,8 @@
 import Logo from '/Logobg.png';
 import './App.css';
 import MemeGenerator from './memes';
+import SpinningImage from './SpinningImage';
+
 
 function App() {
   return (
@@ -11,7 +13,9 @@ function App() {
       <div className="title">
       <h1>How's your Mood Today?</h1>
       </div>
+
       <MemeGenerator />
+      <SpinningImage />
     </>
   );
 }
