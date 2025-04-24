@@ -1,7 +1,7 @@
 import React from "react";
 import "./SpinningImage.css";
 import Ibrahim from "./assets/headshot.svg";
-import Josh from ".assets/Joshheadshot.png";
+import Josh from "./assets/Joshheadshot.png";
 
 const SpinningImage = () => {
   return (
