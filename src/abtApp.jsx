@@ -2,20 +2,19 @@ import Logo from '/Logobg.png';
 import './App.css';
 import SpinningImage from './SpinningImage';
 import NavBar from './NavBar'
+import EmotionData from './emotionData';
 
 
 function AbtApp() {
   return (
     <>
-        <NavBar />
-
-      <div className="logo" onClick={() => window.location.reload()}>
-        <img src={Logo} className="logo" alt="Logobg" />
-      </div>
+      <NavBar />
+      
       <div className="title">
       <h1>About Vibe Checker</h1>
       </div>
 
+      <EmotionData />
       <SpinningImage />
     </>
   );
