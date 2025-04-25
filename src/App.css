@@ -21,8 +21,45 @@ body{
   background-color: var(--color-palette-4);
   border-radius: 5%;
 }
+
+.logoNav {
+  position: absolute;
+  justify-content: flex-start;
+  object-fit: scale-down;
+  cursor: pointer;
+  border-radius: 5%;
+}
+
 .title{
   position: flex;
   text-align: center;
   font-size:5vh;
+}
+
+.navTitle{
+  background-image: url('assets/Logobg.png');
+  background-repeat: no-repeat;
+  background-size: 75px;
+  background-position: center left;
+  text-align: center;
+  font-size:5vh;
+  padding-left: 75px;
+  padding-top: 25px;
+}
+
+header {
+  top: 0;
+  background: var(--color-palette-2);
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  padding: 10px 0px;
+}
+
+li {
+  flex: 1;
+  text-align: center;
 }

@@ -1,24 +1,24 @@
 import Logo from '/Logobg.png';
 import './App.css';
-import MemeGenerator from './memes';
+import SpinningImage from './SpinningImage';
 import NavBar from './NavBar'
 
 
-function App() {
+function AbtApp() {
   return (
     <>
-      <NavBar />
+        <NavBar />
 
       <div className="logo" onClick={() => window.location.reload()}>
         <img src={Logo} className="logo" alt="Logobg" />
       </div>
       <div className="title">
-      <h1>How's your Mood Today?</h1>
+      <h1>About Vibe Checker</h1>
       </div>
 
-      <MemeGenerator />
+      <SpinningImage />
     </>
   );
 }
 
-export default App;
+export default AbtApp;
