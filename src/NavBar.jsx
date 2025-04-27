@@ -10,7 +10,7 @@ function NavBar() {
       <div>
           <div class="HeadingBar" >
             <div ><a href="/index.html"><img class="HeadingItem" src={Logo} className="logo" alt="Logo" /></a></div>
-            <div ><a href="about.html"><img class="HeadingItem" src={About} className="logo" alt="Logo" /></a></div>
+            <div ><a href="/about.html"><img class="HeadingItem" src={About} className="logo" alt="Logo" /></a></div>
           </div>
       </div>
 
