@@ -15,6 +15,10 @@ let tableData = null
 function EmotionData(){
     const [emotion_data, SetEmotionData] = useState({})
     const [chart_data, SetChartData] = useState([{}])
+    const [chartData, setRealChartData] = useState({
+
+    });
+    const [load, setLoad] = useState(false);
 
       useEffect(() => {
         const fetchData = async () => {
@@ -25,48 +29,36 @@ function EmotionData(){
       
             const [emoteData] = tableData.map(t => t.data || []);
 
-            SetEmotionData({
-                'happyClicks': emoteData[0].happy_clicks,
-                'angryClicks': emoteData[0].angry_clicks,
-                'sadClicks': emoteData[0].sad_clicks,
-                'coolClicks': emoteData[0].cool_clicks,
-                'mind_blownClicks': emoteData[0].mind_blown_clicks,
-                'sleepyClicks': emoteData[0].sleepy_clicks,
-            });
+            setRealChartData({
+              labels: [
+                'Happy',
+                'Angry',
+                'Sad',
+                'Cool',
+                'Mind Blown',
+                'Sleepy',
+              ], 
+              datasets: [
+                {
+                  label: "Emotion Clicks",
+                  data: [
+                    emoteData[0].happy_clicks, 
+                    emoteData[0].angry_clicks, 
+                    emoteData[0].sad_clicks, 
+                    emoteData[0].cool_clicks,
+                    emoteData[0].mind_blown_clicks,
+                    emoteData[0].sleepy_clicks,
+                  ],
+                  backgroundColor: [
+                    "#8A9CEA",
+                  ],
+                  borderColor: "black",
+                  borderWidth: 2
+                }
+              ]
+            })
 
-            SetChartData([
-              {
-                id: 1,
-                emotion: 'Happy',
-                clicks: emoteData[0].happy_clicks
-              },
-              {
-                id: 2,
-                emotion: 'Angry',
-                clicks: emoteData[0].angry_clicks
-              },
-              {
-                id: 3,
-                emotion: 'Sad',
-                clicks: emoteData[0].sad_clicks
-              },
-              {
-                id: 4,
-                emotion: 'Cool',
-                clicks: emoteData[0].cool_clicks
-              },
-              {
-                id: 5,
-                emotion: 'Mind Blown',
-                clicks: emoteData[0].mind_blown_clicks
-              },
-              {
-                id: 6,
-                emotion: 'Sleepy',
-                clicks: emoteData[0].sleepy_clicks
-              },
-            ])
-
+            setLoad(true)
           } catch (error) {
             console.error("Error fetching data:", error);
           }
@@ -75,22 +67,11 @@ function EmotionData(){
         fetchData();
       }, []);
 
-      const [chartData] = useState({
-        labels: chart_data.map((data) => data.emotion), 
-        datasets: [
-          {
-            label: "Emotion Clicks",
-            data: chart_data.map((data) => parseInt(data.clicks)),
-            backgroundColor: [
-              "rgba(75,192,192,1)"
-            ],
-          }
-        ]
-      });
-
       return (
         <div>
-          <PieChart chartData={chartData} />
+
+          {load &&
+          <PieChart chartData={chartData} />}
         </div>
       );
 }

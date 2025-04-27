@@ -10,11 +10,15 @@ const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 let tables = null;
+let clickTable = null;
+let eClickData = [0,0,0,0,0,0];
 
 function MemeGenerator() {
   const [feelingsMap, setFeelingsMap] = useState({});
   const [memeUrl, setMemeUrl] = useState('');
   const [loading, setLoading] = useState(false);
+  const [feelingsClickData, setClickData] = useState({})
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,6 +44,29 @@ function MemeGenerator() {
           '🤯': getRand(mindBlown),
           '😴': getRand(sleepy),
         });
+
+        clickTable = await Promise.all([
+          supabase.from('emotion_data').select('*')
+        ]);
+
+        const [eData] = clickTable.map(c => c.data || []);
+
+        setClickData({
+          '😄': 0,
+          '😡': 1,
+          '😢': 2,
+          '😎': 3,
+          '🤯': 4,
+          '😴': 5,
+        })
+
+        eClickData[0] = eData[0].happy_clicks;
+        eClickData[1] = eData[0].angry_clicks;
+        eClickData[2] = eData[0].sad_clicks;
+        eClickData[3] = eData[0].cool_clicks;
+        eClickData[4] = eData[0].mind_blown_clicks;
+        eClickData[5] = eData[0].sleepy_clicks;
+
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -62,6 +89,36 @@ function MemeGenerator() {
       '🤯': getRand(mindBlown),
       '😴': getRand(sleepy),
     });
+
+    try{
+      if (feelingsClickData[emoji] == 0){
+        eClickData[0] = eClickData[0] + 1;
+        const { error } = await supabase.from('emotion_data').update({ happy_clicks: eClickData[0] }).eq('id', 1);
+      }
+      else if (feelingsClickData[emoji] == 1){
+        eClickData[1] = eClickData[1] + 1;
+        const { error } = await supabase.from('emotion_data').update({ angry_clicks: eClickData[1] }).eq('id', 1); 
+      }
+      else if (feelingsClickData[emoji] == 2){
+        eClickData[2] = eClickData[2] + 1;
+        const { error } = await supabase.from('emotion_data').update({ sad_clicks: eClickData[2] }).eq('id', 1); 
+      }
+      else if (feelingsClickData[emoji] == 3){
+        eClickData[3] = eClickData[3] + 1;
+        const { error } = await supabase.from('emotion_data').update({ cool_clicks: eClickData[3] }).eq('id', 1); 
+      }
+      else if (feelingsClickData[emoji] == 4){
+        eClickData[4] = eClickData[4] + 1;
+        const { error } = await supabase.from('emotion_data').update({ mind_blown_clicks: eClickData[4] }).eq('id', 1); 
+      }
+      else if (feelingsClickData[emoji] == 5){
+        eClickData[5] = eClickData[5] + 1;
+        const { error } = await supabase.from('emotion_data').update({ sleepy_clicks: eClickData[5] }).eq('id', 1); 
+      }
+    }
+    catch (err) {
+      console.error("Value Update Error:", err);
+    }
 
     const quote = feelingsMap[emoji];
     if (!quote) return;

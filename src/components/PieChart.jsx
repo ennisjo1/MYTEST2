@@ -13,6 +13,9 @@ function PieChart({ chartData }) {
             title: {
               display: true,
               text: "What emotions have people been feeling?"
+            },
+            legend: {
+              display:false
             }
           }
         }}
