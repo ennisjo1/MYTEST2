@@ -13,21 +13,19 @@ body{
   font-family: "Jockey One", sans-serif;
 }
 
-.logo {
-  position: absolute;
-  justify-content: flex-start;
-  width: 9vw;
-  cursor: pointer;
-  background-color: var(--color-palette-4);
-  border-radius: 5%;
+:root{
+  --color-palette-1:#A5D5D1;
+  --color-palette-2:#8A9CEA;
+  --color-palette-3:#81EFD1;
+  --color-palette-4:#D4C4BE;
+  --color-palette-5:#D9D9D9;
+  --color-palette-6:#76A5D4;
 }
 
-.logoNav {
-  position: absolute;
-  justify-content: flex-start;
-  object-fit: scale-down;
-  cursor: pointer;
-  border-radius: 5%;
+body{
+  background-color: var(--color-palette-4);
+  font-family: "Jockey One", sans-serif;
+  text-align: center;
 }
 
 .title{
@@ -36,30 +34,16 @@ body{
   font-size:5vh;
 }
 
-.navTitle{
-  background-image: url('assets/Logobg.png');
-  background-repeat: no-repeat;
-  background-size: 75px;
-  background-position: center left;
-  text-align: center;
-  font-size:5vh;
-  padding-left: 75px;
-  padding-top: 25px;
+.HeadingBar{
+  display:flex;
+  justify-content: center;
+  background-color: var(--color-palette-2);
+  gap: 10vw;
+  cursor: pointer;
+}
+.logo{
+  height:10vh;
+  width:10vw;
+  margin:1vh;
 }
 
-header {
-  top: 0;
-  background: var(--color-palette-2);
-}
-
-ul {
-  display: flex;
-  list-style-type: none;
-  align-items: center;
-  padding: 10px 0px;
-}
-
-li {
-  flex: 1;
-  text-align: center;
-}

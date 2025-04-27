@@ -1,23 +1,19 @@
-import Logo from '/Logobg.png';
+import Logo from './assets/Logobg.svg';
 import './App.css';
+import About from './assets/About.svg';
 
 
 function NavBar() {
   return (
     <>    
-      <header>
-      <div className="navTitle">
-      <h1>Vibe Checker</h1>
-      </div>
+
       <div>
-        <nav>
-            <ul>
-                <li><a title="Home Page" href="/index.html">Home</a></li>
-                <li><a title="About Page" href="/about.html">About</a></li>
-            </ul>
-        </nav>
-        </div>
-    </header>
+          <div class="HeadingBar" >
+            <div ><a href="/index.html"><img class="HeadingItem" src={Logo} className="logo" alt="Logo" /></a></div>
+            <div ><a href="about.html"><img class="HeadingItem" src={About} className="logo" alt="Logo" /></a></div>
+          </div>
+      </div>
+
     </>
   );
 }
