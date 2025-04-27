@@ -13,27 +13,18 @@ body{
   font-family: "Jockey One", sans-serif;
 }
 
-:root{
-  --color-palette-1:#A5D5D1;
-  --color-palette-2:#8A9CEA;
-  --color-palette-3:#81EFD1;
-  --color-palette-4:#D4C4BE;
-  --color-palette-5:#D9D9D9;
-  --color-palette-6:#76A5D4;
-}
 
-body{
-  background-color: var(--color-palette-4);
-  font-family: "Jockey One", sans-serif;
-  text-align: center;
-}
 
 .title{
   position: flex;
   text-align: center;
   font-size:5vh;
+  margin-top: 1vh;
 }
-
+.bodyText{
+  font-size: 3vh;
+  text-align: center;
+}
 .HeadingBar{
   display:flex;
   justify-content: center;
@@ -46,4 +37,17 @@ body{
   width:10vw;
   margin:1vh;
 }
-
+.chart-container{
+  width:100vw;
+  height:70vh;
+  margin:auto;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+}
+canvas{
+  margin:auto;
+  background-color: aliceblue;
+  border-radius: 20px;
+  width:100vw;
+  height:50vh;
+}

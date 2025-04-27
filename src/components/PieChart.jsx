@@ -2,21 +2,25 @@ import React from "react";
 import { Radar } from 'react-chartjs-2';
 
 
-function PieChart({ chartData }) {
+function PieChart({ chartData, maximum }) {
   return (
     <div className="chart-container">
-      <h2 style={{ textAlign: "center" }}>Pie Chart</h2>
       <Radar
         data={chartData}
         options={{
           plugins: {
             title: {
-              display: true,
-              text: "What emotions have people been feeling?"
+              display: false,
             },
             legend: {
-              display:false
-            }
+              display:false,
+            },
+          },
+          scales: {
+            r: {
+                min: 0,
+                max: maximum,
+            },
           }
         }}
       />

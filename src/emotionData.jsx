@@ -11,6 +11,8 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 Chart.register(CategoryScale);
 
 let tableData = null
+let maximum = 0
+
 
 function EmotionData(){
     const [emotion_data, SetEmotionData] = useState({})
@@ -71,7 +73,7 @@ function EmotionData(){
         <div>
 
           {load &&
-          <PieChart chartData={chartData} />}
+          <PieChart chartData={(chartData, maximum)} />}
         </div>
       );
 }

@@ -11,10 +11,13 @@ function AbtApp() {
       <NavBar />
       
       <div className="title">
-      <h1>About Vibe Checker</h1>
+      <h1 class="title">About Vibe Checker</h1>
       </div>
-
-      <EmotionData />
+      <h2 className="bodyText">Our project is titled Vibe Checker. Our website is designed to humor those with different moods and preferences. Centering users-humor easily identified through feelings shown through emojis, users can choose the mood for amusement, curiosity, and novel interest.</h2>  
+      <h2 className="title">User Vibes</h2>
+      <div className="EmotionDataDiv">
+       <EmotionData />
+      </div>
       <SpinningImage />
     </>
   );
