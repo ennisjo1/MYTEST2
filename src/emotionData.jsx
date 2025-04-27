@@ -9,6 +9,7 @@ const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 Chart.register(CategoryScale);
+Chart.defaults.font.family = "Jockey One";
 
 let tableData = null
 let maximum = 0
@@ -30,6 +31,21 @@ function EmotionData(){
             ]);
       
             const [emoteData] = tableData.map(t => t.data || []);
+
+            const iterData = [
+              emoteData[0].happy_clicks, 
+              emoteData[0].angry_clicks, 
+              emoteData[0].sad_clicks, 
+              emoteData[0].cool_clicks,
+              emoteData[0].mind_blown_clicks,
+              emoteData[0].sleepy_clicks,
+            ]
+
+            for (let i = 0; i < iterData.length; i++) {
+              if (iterData[i] > maximum){
+                maximum = iterData[i];
+              }
+            }
 
             setRealChartData({
               labels: [
@@ -55,7 +71,7 @@ function EmotionData(){
                     "#8A9CEA",
                   ],
                   borderColor: "black",
-                  borderWidth: 2
+                  borderWidth: 2,
                 }
               ]
             })
@@ -73,7 +89,7 @@ function EmotionData(){
         <div>
 
           {load &&
-          <PieChart chartData={(chartData, maximum)} />}
+          <PieChart chartData={chartData} />}
         </div>
       );
 }

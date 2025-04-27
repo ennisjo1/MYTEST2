@@ -1,8 +1,9 @@
 import React from "react";
 import { Radar } from 'react-chartjs-2';
+import EmotionData from "../emotionData";
 
 
-function PieChart({ chartData, maximum }) {
+function PieChart({chartData}) {
   return (
     <div className="chart-container">
       <Radar
@@ -15,12 +16,14 @@ function PieChart({ chartData, maximum }) {
             legend: {
               display:false,
             },
+
           },
           scales: {
             r: {
                 min: 0,
-                max: maximum,
+                max: EmotionData.maximum,
             },
+
           }
         }}
       />
